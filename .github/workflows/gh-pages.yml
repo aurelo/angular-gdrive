@@ -20,8 +20,8 @@ jobs:
 
     - name: output repository info
       run: |
-        echo repository name ${{toJson(github.repository.name)}}
-        echo html url ${{toJson(github.repository.html_url)}}
+        echo repository  ${{toJson(repository)}}
+        echo html url ${{toJson(repository.html_url)}}
         echo repository ${{github.repository}}
 
     
@@ -38,7 +38,7 @@ jobs:
       run: npm install
 
     - name: Build
-      run: npm run build --base-href ${{github.server_url}}/${{github.repository}}
+      run: npm run build --base-href "${{github.server_url}}/${{github.repository}}"
 
     - name: Deploy
       if: success()
