@@ -17,13 +17,6 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
-
-    - name: output repository info
-      run: |
-        echo repository  ${{toJson(repository)}}
-        echo html url ${{toJson(repository.html_url)}}
-        echo repository ${{github.repository}}
-
     
     - name: Checkout
       uses: actions/checkout@v3
