@@ -38,12 +38,12 @@ jobs:
       run: npm install
 
     - name: Build
-      run: npm run build --base-href ${{toJson(github.repository.html_url)}}
+      run: npm run build --base-href ${{github.server_url}}/${{github.repository}}
 
     - name: Deploy
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/${{toJson(github.repository.name)}}
+        publish_dir: dist/${{github.actor}}
         enable_jekyll: true
