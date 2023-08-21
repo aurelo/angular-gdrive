@@ -26,7 +26,7 @@ jobs:
       run: npm install
 
     - name: Build
-      run: npm run build --base-href ${{github.repository.html_url}}
+      run: npm run build --base-href ${{toJson(github.repository.html_url)}}
 
     - name: Dump GitHub context
       env:
@@ -35,9 +35,9 @@ jobs:
 
     - name: output repository info
       run: |
-        echo ${{github.repository.name}}
-        echo ${{github.repository.html_url}}
-        echo ${{github.repository}}
+        echo repository name ${{toJson(github.repository.name)}}
+        echo html url ${{toJson(github.repository.html_url)}}
+        echo repository ${{github.repository}}
 
     - name: Deploy
       if: success()
