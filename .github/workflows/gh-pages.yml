@@ -33,12 +33,16 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
 
+    - name: output repository info
+      run: |
+        echo ${{github.repository.name}}
+        echo ${{github.repository.html_url}}
+        echo ${{github.repository}}
+
     - name: Deploy
       if: success()
       uses: peaceiris/actions-gh-pages@v3
-      env: 
-         ANGULAR_DIST_DIR: dist/${{github.repository.name}}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: $ANGULAR_DIST_DIR
+        publish_dir: dist/${{github.repository.name}}
         enable_jekyll: true
