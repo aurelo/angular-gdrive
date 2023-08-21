@@ -45,6 +45,3 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: dist/${{github.event.repository.name}}
         enable_jekyll: true
-
-    - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v2
