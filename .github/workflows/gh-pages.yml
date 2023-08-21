@@ -36,7 +36,9 @@ jobs:
     - name: Deploy
       if: success()
       uses: peaceiris/actions-gh-pages@v3
+      env: 
+         REPOSITORY: ${{github.repository.name}}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/${{github.repository.name}}/
+        publish_dir: dist/angular-gdrive/
         enable_jekyll: true
