@@ -13,6 +13,18 @@ jobs:
       contents: write
   
     steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
+    - name: output repository info
+      run: |
+        echo repository name ${{toJson(github.repository.name)}}
+        echo html url ${{toJson(github.repository.html_url)}}
+        echo repository ${{github.repository}}
+
+    
     - name: Checkout
       uses: actions/checkout@v3
 
@@ -28,21 +40,10 @@ jobs:
     - name: Build
       run: npm run build --base-href ${{toJson(github.repository.html_url)}}
 
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
-    - name: output repository info
-      run: |
-        echo repository name ${{toJson(github.repository.name)}}
-        echo html url ${{toJson(github.repository.html_url)}}
-        echo repository ${{github.repository}}
-
     - name: Deploy
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/${{github.repository.name}}
+        publish_dir: dist/${{toJson(github.repository.name)}}
         enable_jekyll: true
