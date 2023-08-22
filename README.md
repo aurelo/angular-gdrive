@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Links
+
+[Google discovery document docs](https://developers.google.com/identity/openid-connect/openid-connect#discovery)
+
+[Google openid config](https://accounts.google.com/.well-known/openid-configuration)
+
+[Authority](https://accounts.google.com)
+
+
+[Set up google credentials and consent](https://console.cloud.google.com/apis/dashboard)
+
+
+[Google drive API docs](https://developers.google.com/drive/api/reference/rest/v3?apix=true)
