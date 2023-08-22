@@ -11,18 +11,41 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+import { IconDefinition } from '@ant-design/icons-angular';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+
+import { GoogleOutline } from '@ant-design/icons-angular/icons';
+import { GdriveComponent } from './gdrive/gdrive.component';
+import { HomeComponent } from './home/home.component';
+import { AuthConfigModule } from './auth/auth-config.module';
+
+const icons: IconDefinition[] = [ GoogleOutline ];
+
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GdriveComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NzLayoutModule,
+    NzCardModule,
+    NzButtonModule,
+    NzGridModule,
+    NzIconModule.forRoot(icons),
+    AuthConfigModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
